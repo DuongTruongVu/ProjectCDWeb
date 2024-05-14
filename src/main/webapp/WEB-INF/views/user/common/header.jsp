@@ -46,9 +46,9 @@
                             </security:authorize>
                             <security:authorize access="isAuthenticated()">
                                 <li>
-                                    <a href="#">
+                                    <a href="<c:url value="/orders"/>">
                                         <i class="far fa-check-circle u-s-m-r-9"></i>
-                                        My Purchases</a>
+                                        My Orders</a>
                                 </li>
 
                                 <li>
@@ -113,7 +113,7 @@
                     <nav>
                         <ul class="mid-nav g-nav">
                             <li class="u-d-none-lg">
-                                <a href="home.html">
+                                <a href="<c:url value="/" />">
                                     <i class="ion ion-md-home u-c-brand"></i>
                                 </a>
                             </li>
@@ -184,12 +184,6 @@
                             <a href="<c:url value="/about"/>">About Us
                             </a>
                         </li>
-
-                        <%--                        <li>--%>
-                        <%--                            <a href="custom-deal-page.html">Super Sale--%>
-                        <%--                                <span class="superscript-label-discount">-15%</span>--%>
-                        <%--                            </a>--%>
-                        <%--                        </li>--%>
                     </ul>
                 </div>
             </div>
@@ -202,9 +196,10 @@
         $(document).ready(function () {
             //using ajax to get the catory list with api http://localhost:8080/api/v1/categories
             $.ajax({
-                url: "http://localhost:8080/api/v1/categories",
+                url: "<c:url value="/api/v1/categories"/>",
                 type: "GET",
                 success: function (data) {
+                    console.log(data)
                     var html = "";
                     for (var i = 0; i < data.length; i++) {
                         html += "<li><a href='/products/category/" + data[i].id + "'><i class='fas fa-shoe-prints'></i>"
